@@ -1,0 +1,365 @@
+html {
+    scroll-behavior: smooth;
+    /* Плавный скролл при переходе по якорям */
+}
+
+
+/* Общие стили */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    color: black;
+}
+
+#navigation {
+    position: sticky ;
+    /* Добавлено для закрепления */
+    top: 0;
+    /* Задает, на каком расстоянии от верхней части окна будет фиксироваться элемент */
+    z-index: 1000;
+    /* Добавлено для обеспечения видимости на других элементах */
+}
+
+/* Навигационное меню */
+#navigation ul {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    list-style-type: none;
+    padding: 10px;
+    background-color: #333;
+    margin: 0;
+}
+
+#navigation ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.5em;
+    padding: 10px 20px;
+    background-color: #172645;
+    border-radius: 10px;
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.5);
+    transition: all 0.3s ease;
+}
+
+#navigation ul li a:hover {
+    background-color: #444;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.7);
+    text-decoration: underline;
+}
+
+
+h1 {
+    color: white;
+}
+
+h2 {
+    color: #000000;
+}
+
+/* Стили для MVP – Итерация 1 */
+#landing {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-image: url('theweeknd.jpg');
+    /* URL изображения */
+    background-size: cover;
+    background-position: center;
+    color: white;
+}
+
+/* Прозрачный слой для размытия */
+#landing::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    /* Прозрачный черный слой */
+    backdrop-filter: blur(10px);
+    /* Размывание */
+    z-index: 1;
+}
+
+/* Контент размещается поверх слоя */
+#landing>div {
+    position: relative;
+    z-index: 2;
+}
+
+#landing h1 {
+    font-size: 3em;
+    margin-bottom: 20px;
+    text-shadow: -3px 4px 15px rgba(0, 0, 0, 0.6);
+}
+
+#landing p {
+    font-size: 1.5em;
+    margin: 10px 0;
+    color: white;
+    text-shadow: -3px 4px 4px rgba(0, 0, 0, 0.76);
+}
+
+
+
+/* Стили для MMP – Итерация 2 */
+
+/* Разделы контента */
+section {
+    padding: 50px;
+    text-align: center;
+}
+
+#schedule p,
+#tickets p,
+#reviews blockquote,
+#faq p {
+    font-size: 1.2em;
+    margin: 20px 0;
+}
+
+.concerts-container {
+    display: flex;
+    justify-content: space-between;
+    overflow: hidden;
+    /* Прячем лишние карточки */
+}
+
+.concert-card {
+    flex: 0 0 30%;
+    /* 3 карточки на экран */
+    background-color: #f0f0f0;
+    border-radius: 8px;
+    padding: 15px;
+    text-align: center;
+    position: relative;
+}
+
+.concert-image {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+.artist-name {
+    margin: 10px 0 5px 0;
+}
+
+.concert-date {
+    margin: 5px 0;
+}
+
+.add-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: white;
+    border: none;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.arrow-buttons {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.prev-button,
+.next-button {
+    background-color: #333;
+    color: #6895e3;;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    margin: 0 10px;
+    border-radius: 5px;
+}
+
+
+/* Форма покупки билета */
+#tickets form {
+    max-width: 100%;
+    /* Увеличиваем ширину формы */
+    margin: 0 auto;
+    text-align: left;
+}
+
+/* Стиль для контейнера формы */
+.form-container {
+    background-color: #6895e3;
+    /* Цвет фона */
+    padding: 30px;
+    border-radius: 15px;
+    /* Закругленные углы */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    /* Тень */
+    width: 100%;
+    /* Устанавливаем ширину контейнера */
+    max-width: 600px;
+    /* Ограничиваем максимальную ширину контейнера */
+    margin: 0 auto;
+    /* Центрируем контейнер на странице */
+}
+
+#tickets form div {
+    margin-bottom: 15px;
+}
+
+
+#tickets label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+#tickets input[type="text"],
+#tickets input[type="tel"],
+#tickets input[type="email"] {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+#reviews-tickets button[type="submit"] {
+    padding: 10px 20px;
+    font-size: 1.2em;
+    background-color: #ff5a5f;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 100%;
+    border-radius: 4px;
+}
+
+#reviews-tickets button[type="submit"]:hover {
+    background-color: GREEN;
+}
+
+
+/* Стили для отзывов */
+#reviews blockquote {
+    font-style: italic;
+    color: #555;
+    border-left: 4px solid #6895e3;
+    padding-left: 20px;
+    margin-left: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    overflow: hidden;
+    max-height: 80px;
+    /* Ограничиваем высоту блока для скрытия текста */
+    position: relative;
+}
+
+#reviews-container .review {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+#reviews-container .review-photo {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    margin-right: 20px;
+}
+
+#reviews-container .review-text {
+    display: inline-block;
+    margin: 0;
+}
+
+#reviews-container .read-more {
+    color: #007BFF;
+    font-weight: bold;
+    cursor: pointer;
+    display: block;
+    margin-top: 10px;
+}
+
+#reviews-container blockquote.expanded {
+    max-height: none;
+    /* Убираем ограничение высоты */
+}
+
+
+/* Часто задаваемые вопросы */
+#faq {
+    text-align: left;
+    /* Выравниваем текст по левому краю */
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.faq-item {
+    background-color: #6895e3;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 10px;
+    padding: 20px;
+    cursor: pointer;
+}
+
+.faq-question {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+}
+
+.faq-item.active .faq-answer {
+    max-height: 200px;
+    /* Разворачиваем блок ответа */
+}
+
+.faq-toggle {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #333;
+    transition: transform 0.3s ease;
+}
+
+.faq-item.active .faq-toggle {
+    transform: rotate(45deg);
+    /* Поворачиваем плюс на 45 градусов, чтобы он стал крестиком */
+}
+
+#reviews-tickets {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 50px;
+    align-items: flex-start;
+}
+
+#tickets-container, #reviews-container {
+    flex: 1;
+    max-width: 48%; /* Ограничиваем ширину блоков */
+}
+
+.form-container {
+    width: 100%; /* Ширина формы адаптируется под новый контейнер */
+}
+
+#reviews-container {
+    text-align: left;
+}
